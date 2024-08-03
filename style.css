@@ -538,6 +538,7 @@ footer .copyright{
 }
 
 
+
 /* Shop Page */
 
 #page-header{
@@ -551,6 +552,7 @@ footer .copyright{
   flex-direction: column;
   padding: 40px;
 }
+
 
 #page-header h2,
 #page-header p{
@@ -580,6 +582,8 @@ footer .copyright{
   font-size: 16px;
   font-weight: 600;
 }
+
+
 
 /* Single Product */
 #prodetails{
@@ -643,9 +647,42 @@ footer .copyright{
   line-height: 25px;
 }
 
-/* Blog Page */
+
 
 /* About Page */
+#page-header.about-header {
+  background-image: url("img/about/banner.png");
+}
+
+#about-head {
+  display: flex;
+  align-items: center;
+}
+
+#about-head img {
+  width: 50%;
+  height: auto;
+}
+
+#about-head div{
+  padding-left: 40px;
+}
+
+#about-app {
+  text-align: center;
+}
+
+#about-app .video{
+  width: 70%;
+  height: 100%;
+  margin: 30px auto 0 auto;
+}
+
+#about-app .video video{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
 
 /* Contact Page */
 
