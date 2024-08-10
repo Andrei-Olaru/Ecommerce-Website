@@ -13,7 +13,7 @@
 <body>
     
     <section id="header">
-        <a href="#"><img src="img/logo.png" class="logo"></a>
+        <a  ><img src="img/logo.png" class="logo"></a>
 
         <div>
             <ul id="navbar">
@@ -21,7 +21,12 @@
                 <li><a class="active" href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+                <li>
+                    <a href="cart.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-quantity" class="cart-quantity-badge" style="display: none;">0</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </section>
@@ -33,9 +38,9 @@
 
     <section id="product1" class="section-p1">
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="img/products/f1.jpg">
-                <div class="des">
+            <div class="pro">
+                <img src="img/products/f1.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Floral Cartoon T-Shirts</h5>
                     <div class="star">
@@ -47,12 +52,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a class="cart" onclick="addToCart('Floral Cartoon T-Shirts', 35, 'img/products/f1.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f2.jpg">
-                <div class="des">
+                <img src="img/products/f2.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Floral Summer T-Shirts</h5>
                     <div class="star">
@@ -64,12 +69,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Floral Summer T-Shirts', 35, 'img/products/f2.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f3.jpg">
-                <div class="des">
+                <img src="img/products/f3.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Roses T-Shirts</h5>
                     <div class="star">
@@ -81,12 +86,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Roses T-Shirts', 35, 'img/products/f3.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f4.jpg">
-                <div class="des">
+                <img src="img/products/f4.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Cherry Blossom T-Shirts</h5>
                     <div class="star">
@@ -98,12 +103,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Cherry Blossom T-Shirts', 35, 'img/products/f4.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f5.jpg">
-                <div class="des">
+                <img src="img/products/f5.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Night Cherry Blosoom T-Shirts</h5>
                     <div class="star">
@@ -115,12 +120,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Cherry Blossom T-Shirts', 35, 'img/products/f5.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f6.jpg">
-                <div class="des">
+                <img src="img/products/f6.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Copler Megan</span>
                     <h5>Red and Blue Shirt</h5>
                     <div class="star">
@@ -132,12 +137,12 @@
                     </div>
                     <h4>$40</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Red and Blue Shirt', 40, 'img/products/f6.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f7.jpg">
-                <div class="des">
+                <img src="img/products/f7.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Copler Megan</span>
                     <h5>Floral Summer Pants</h5>
                     <div class="star">
@@ -149,12 +154,12 @@
                     </div>
                     <h4>$50</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Floral Summer Pants', 35, 'img/products/f7.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/f8.jpg">
-                <div class="des">
+                <img src="img/products/f8.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Copler Megan</span>
                     <h5>Floral Summer Pants</h5>
                     <div class="star">
@@ -166,12 +171,12 @@
                     </div>
                     <h4>$30</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Floral Summer Pants', 50, 'img/products/f8.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n1.jpg">
-                <div class="des">
+                <img src="img/products/n1.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Simple Blue Shirt </h5>
                     <div class="star">
@@ -183,12 +188,12 @@
                     </div>
                     <h4>$30</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Simple Blue Shirt', 30, 'img/products/n1.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n2.jpg">
-                <div class="des">
+                <img src="img/products/n2.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Square Shirt</h5>
                     <div class="star">
@@ -200,12 +205,12 @@
                     </div>
                     <h4>$30</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Square Shirt', 30, 'img/products/n2.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n3.jpg">
-                <div class="des">
+                <img src="img/products/n3.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Simple White Shirt</h5>
                     <div class="star">
@@ -217,12 +222,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Simple White Shirt', 35, 'img/products/n3.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n4.jpg">
-                <div class="des">
+                <img src="img/products/n4.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>G-station Shirt</h5>
                     <div class="star">
@@ -234,12 +239,12 @@
                     </div>
                     <h4>$40</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('G-station Shirt', 40, 'img/products/n4.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n5.jpg">
-                <div class="des">
+                <img src="img/products/n5.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Lemille Macler</span>
                     <h5>Denim Shirt</h5>
                     <div class="star">
@@ -251,12 +256,12 @@
                     </div>
                     <h4>$45</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Denim Shirt', 45, 'img/products/n5.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n6.jpg">
-                <div class="des">
+                <img src="img/products/n6.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Copler Megan</span>
                     <h5>Elegant Short Pants</h5>
                     <div class="star">
@@ -268,12 +273,12 @@
                     </div>
                     <h4>$60</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Elegant Short Pants', 60, 'img/products/n6.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n7.jpg">
-                <div class="des">
+                <img src="img/products/n7.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';"> 
                     <span>Copler Megan</span>
                     <h5>Orange Shirt</h5>
                     <div class="star">
@@ -285,12 +290,12 @@
                     </div>
                     <h4>$35</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Orange Shirt', 35, 'img/products/n7.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
 
             <div class="pro">
-                <img src="img/products/n8.jpg">
-                <div class="des">
+                <img src="img/products/n8.jpg" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
                     <span>Copler Megan</span>
                     <h5>Black Oversized Shirt</h5>
                     <div class="star">
@@ -302,15 +307,15 @@
                     </div>
                     <h4>$40</h4>
                 </div>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a   class="cart" onclick="addToCart('Black Oversized Shirt', 40, 'img/products/n8.jpg')"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>
     </section>
 
     <section id="pagination" class="section-p1">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fas fa-arrow-right"></i></a>
+        <a  >1</a>
+        <a  >2</a>
+        <a  ><i class="fas fa-arrow-right"></i></a>
     </section>
 
     <section id="newsletter" class="section-p1 section-m1">
@@ -345,20 +350,20 @@
 
         <div class="col">
             <h4>About</h4>
-            <a href="#">About Us</a>
-            <a href="#">Delivery Information</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a  >About Us</a>
+            <a  >Delivery Information</a>
+            <a  >Privacy Policy</a>
+            <a  >Terms & Conditions</a>
+            <a  >Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My account</h4>
-            <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help</a>
+            <a  >Sign In</a>
+            <a  >View Cart</a>
+            <a  >My Wishlist</a>
+            <a  >Track My Order</a>
+            <a  >Help</a>
         </div>
 
         <div class="col install">
