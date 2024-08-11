@@ -1,6 +1,6 @@
 let cartItems = []; // Holds the items in the cart
 
-function addToCart(name, price, image) {
+function addToCart(name, price, image, clickedElement) {
     // Add product to cart
     const product = { name, price, image };
     cartItems.push(product);
@@ -8,18 +8,20 @@ function addToCart(name, price, image) {
     // Save cart items to localStorage
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-    // Trigger animation on the cart icon
-    const cartIcon = document.querySelector('.cart');
-    if (cartIcon) {
-        cartIcon.classList.add('cart-added');
-        setTimeout(() => {
-            cartIcon.classList.remove('cart-added');
-        }, 300);
+    // Trigger animation on the specific cart icon
+    if (clickedElement) {
+        clickedElement.classList.add('cart-animation');
+
+        // Remove animation class after animation ends
+        clickedElement.addEventListener('animationend', () => {
+            clickedElement.classList.remove('cart-animation');
+        }, { once: true });
     }
 
     // Update the cart quantity badge in the navbar
     updateCartQuantity();
 }
+
 
 function removeFromCart(index) {
     // Remove the item from the cart

@@ -641,6 +641,11 @@ footer .copyright{
 #prodetails .single-pro-details button{
   background: #088178;
   color: white;
+  transition: 0.3 ease;
+}
+
+#prodetails .single-pro-details button:hover {
+  transform: scale(1.1);
 }
 
 #prodetails .single-pro-details span {
@@ -915,20 +920,20 @@ footer .copyright{
 @keyframes cartAddAnimation {
   0% {
       transform: scale(1);
-      color: inherit;
+      color: #008000;
   }
   50% {
       transform: scale(1.2);
-      color: #3498db;
+      color: #0b8e85;
   }
   100% {
       transform: scale(1);
-      color: inherit;
+      color: #008000;
   }
 }
 
-.cart-added {
-  animation: cartAddAnimation 0.3s ease-in-out;
+.cart-animation {
+  animation: cartAddAnimation 0.6s ease;
 }
 
 /* Cart quantity badge */
