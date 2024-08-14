@@ -10,7 +10,7 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'andrey11',
+    password: 'your_password',
     database: 'ecommerce'
 });
 
@@ -27,6 +27,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.use(express.static(__dirname));
 
 // Start server
 app.listen(port, () => {
@@ -39,22 +40,28 @@ app.listen(port, () => {
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
 
-    // Check if user already exists
     db.query('SELECT * FROM users WHERE username = ?', [username], (err, result) => {
-        if (err) throw err;
-
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Server error');
+        }
         if (result.length > 0) {
-            return res.status(400).json({ message: 'Username already exists' });
+            return res.status(400).send('User already exists');
         }
 
-        // Hash the password
-        const hashedPassword = bcrypt.hashSync(password, 10);
+        bcrypt.hash(password, 10, (err, hash) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Server error');
+            }
 
-        // Insert new user
-        db.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, result) => {
-            if (err) throw err;
-
-            res.status(201).json({ message: 'User registered succesfully' });
+            db.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hash], (err, result) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send('Server error');
+                }
+                res.status(200).send('User registered successfully');
+            });
         });
     });
 });
@@ -92,4 +99,8 @@ app.get('/logout', (req, res) => {
 
         res.status(200).json({ message: 'Logged out succesfully' });
     });
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(__dirname + '/register.html');
 });
