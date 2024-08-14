@@ -10,7 +10,7 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'yourpass',
+    password: 'andrey11',
     database: 'ecommerce'
 });
 
@@ -88,7 +88,8 @@ app.post('/login', (req, res) => {
         // Set session
         req.session.user = { id: user.id, username: user.username };
 
-        res.status(200).send('Logged in succesfully');
+        // res.redirect('index.html');
+        res.redirect('/');
     });
 });
 
@@ -106,5 +107,10 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
+    // res.send('Login successful!');
     res.sendFile(__dirname + '/login.html');
 });
+
+// app.post('/test-login', (req, res) => {
+//     res.send('Login form submitted successfully.');
+// });
