@@ -10,7 +10,7 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'your_password',
+    password: 'yourpass',
     database: 'ecommerce'
 });
 
@@ -75,20 +75,20 @@ app.post('/login', (req, res) => {
         if (err) throw err;
 
         if (result.length === 0) {
-            return res.status(400).json({ message: 'Invalid username or password'});
+            return res.status(400).send('Invalid username or password');
         }
 
         const user = result[0];
 
         // Check password
         if (!bcrypt.compareSync(password, user.password)) {
-            return res.status(400).json({ message: 'Invalid username or password'});
+            return res.status(400).send('Invalid username or password');
         }
 
         // Set session
         req.session.user = { id: user.id, username: user.username };
 
-        res.status(200).json({ message: 'Logged in succesfully' });
+        res.status(200).send('Logged in succesfully');
     });
 });
 
@@ -103,4 +103,8 @@ app.get('/logout', (req, res) => {
 
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html');
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/login.html');
 });
