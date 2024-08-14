@@ -22,7 +22,7 @@ function addToCart(name, price, image, clickedElement) {
     updateCartQuantity();
 }
 
-
+// Function to remove products from cart
 function removeFromCart(index) {
     // Remove the item from the cart
     cartItems.splice(index, 1);
@@ -79,6 +79,7 @@ function updateCartUI() {
     cartTotal.innerHTML = `<strong>$${total.toFixed(2)}</strong>`;
 }
 
+// Function to update quantity
 function updateQuantity(index, quantity) {
     const price = cartItems[index].price;
     const subtotalCell = document.querySelector(`#cart-items-table tbody tr:nth-child(${index + 1}) td:last-child`);
@@ -86,6 +87,7 @@ function updateQuantity(index, quantity) {
     updateCartTotal();
 }
 
+// Function to update cart total
 function updateCartTotal() {
     const subtotalCells = document.querySelectorAll('#cart-items-table tbody td:last-child');
     let total = 0;
@@ -95,9 +97,76 @@ function updateCartTotal() {
     document.getElementById('cart-total').innerHTML = `<strong>$${total.toFixed(2)}</strong>`;
 }
 
-// On page load, update cart UI from localStorage
+// Function to check login status and update the navbar
+// function checkLoginStatus() {
+//     fetch('/status')
+//         .then(response => response.json())
+//         .then(data => {
+//             const loginButton = document.getElementById('login-button');
+//             const logoutButton = document.getElementById('logout-button');
+//             if (data.loggedIn) {
+//                 loginButton.classList.add('hidden');
+//                 logoutButton.classList.remove('hidden');
+//             } else {
+//                 loginButton.classList.remove('hidden');
+//                 logoutButton.classList.add('hidden');
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+// }
+
+// Function to handle logout
+// function handleLogout() {
+//     fetch('/logout')
+//         .then(response => response.json())
+//         .then(data => {
+//             checkLoginStatus(); // Refresh the login status after logout
+//         })
+//         .catch(error => console.error('Error:', error));
+// }
+
+// On page load, initialize cart UI and check login status
 document.addEventListener('DOMContentLoaded', function () {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     cartItems = savedCartItems;
     updateCartUI();
+    // checkLoginStatus();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginButton = document.getElementById('login-button');
+    const logoutButton = document.getElementById('logout-button');
+
+    function updateNavbar() {
+        fetch('/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    loginButton.style.display = 'none';
+                    logoutButton.style.display = 'inline';
+                } else {
+                    loginButton.style.display = 'inline';
+                    logoutButton.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching login status:', error);
+            });
+    }
+
+    updateNavbar(); // Update navbar based on current login status
+
+    // recheck the login status after logout
+    document.getElementById('logout-button').addEventListener('click', function() {
+        fetch('/logout')
+            .then(() => {
+                updateNavbar(); // Update navbar after logout
+            });
+    });
+});
+
+// Attach the handleLogout function to the logout link
+document.getElementById('logout-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleLogout();
 });

@@ -25,7 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 app.use(express.static(__dirname));
 
@@ -88,7 +89,6 @@ app.post('/login', (req, res) => {
         // Set session
         req.session.user = { id: user.id, username: user.username };
 
-        // res.redirect('index.html');
         res.redirect('/');
     });
 });
@@ -98,19 +98,24 @@ app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) throw err;
 
-        res.status(200).json({ message: 'Logged out succesfully' });
+        res.redirect('/');
     });
 });
 
+// Serve static files
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html');
 });
 
 app.get('/login', (req, res) => {
-    // res.send('Login successful!');
     res.sendFile(__dirname + '/login.html');
 });
 
-// app.post('/test-login', (req, res) => {
-//     res.send('Login form submitted successfully.');
-// });
+// Check login status
+app.get('/status', (req, res) => {
+    if (req.session.user) {
+        res.json({ loggedIn: true });
+    } else {
+        res.json({ loggedIn: false });
+    }
+});
