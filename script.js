@@ -97,34 +97,6 @@ function updateCartTotal() {
     document.getElementById('cart-total').innerHTML = `<strong>$${total.toFixed(2)}</strong>`;
 }
 
-// Function to check login status and update the navbar
-// function checkLoginStatus() {
-//     fetch('/status')
-//         .then(response => response.json())
-//         .then(data => {
-//             const loginButton = document.getElementById('login-button');
-//             const logoutButton = document.getElementById('logout-button');
-//             if (data.loggedIn) {
-//                 loginButton.classList.add('hidden');
-//                 logoutButton.classList.remove('hidden');
-//             } else {
-//                 loginButton.classList.remove('hidden');
-//                 logoutButton.classList.add('hidden');
-//             }
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
-
-// Function to handle logout
-// function handleLogout() {
-//     fetch('/logout')
-//         .then(response => response.json())
-//         .then(data => {
-//             checkLoginStatus(); // Refresh the login status after logout
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
-
 // On page load, initialize cart UI and check login status
 document.addEventListener('DOMContentLoaded', function () {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];

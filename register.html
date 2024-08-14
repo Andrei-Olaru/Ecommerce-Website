@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ecommerce website</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-        <link rel="stylesheet" href="style.css">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce website</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <section id="header">
         <a href="index.html"><img src="img/logo.png" class="logo"></a>
@@ -19,7 +18,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a class="active" href="register.html">Log In</a></li>
+                <li id="login-button"><a class="active" href="login.html">Log In</a></li>
                 <li>
                     <a href="cart.html">
                         <i class="fas fa-shopping-cart"></i>
@@ -33,7 +32,7 @@
     <section>
         <div class="form-container">
             <h2>Register</h2>
-            <form action="/register" method="POST">
+            <form id="register-form" action="/register" method="POST">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <br>
@@ -42,6 +41,7 @@
                 <br>
                 <button type="submit">Register</button>
             </form>
+            <div id="message"></div>
             <p>If you already have an account, <a href="login.html">Log In here</a></p>
         </div>
     </section>
@@ -96,5 +96,48 @@
             <p>© 2024, Andrei Olaru - HTML CSS JavaScript Node.js MySQL</p>
        </div>
     </footer>
+    
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const messageElement = document.getElementById('message');
+            messageElement.classList.remove('hidden');
+
+            if (data.success) {
+                messageElement.classList.add('success');
+                messageElement.classList.remove('error');
+                messageElement.textContent = data.message;
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 2000); // Redirect to login after 2 seconds
+            } else {
+                messageElement.classList.add('error');
+                messageElement.classList.remove('success');
+                messageElement.textContent = data.message;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const messageElement = document.getElementById('message');
+            messageElement.classList.add('error');
+            messageElement.classList.remove('success');
+            messageElement.classList.remove('hidden');
+            messageElement.textContent = 'An error occurred. Please try again.';
+        });
+    });
+    </script>
 </body>
 </html>

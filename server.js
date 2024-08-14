@@ -44,24 +44,24 @@ app.post('/register', (req, res) => {
     db.query('SELECT * FROM users WHERE username = ?', [username], (err, result) => {
         if (err) {
             console.error(err);
-            return res.status(500).send('Server error');
+            return res.status(500).json({ success: false, message: 'Server error' });
         }
         if (result.length > 0) {
-            return res.status(400).send('User already exists');
+            return res.status(400).json({ success: false, message: 'User already exists' });
         }
 
         bcrypt.hash(password, 10, (err, hash) => {
             if (err) {
                 console.error(err);
-                return res.status(500).send('Server error');
+                return res.status(500).json({ success: false, message: 'Server error' });
             }
 
             db.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hash], (err, result) => {
                 if (err) {
                     console.error(err);
-                    return res.status(500).send('Server error');
+                    return res.status(500).json({ success: false, message: 'Server error' });
                 }
-                res.status(200).send('User registered successfully');
+                res.status(200).json({ success: true, message: 'User registered successfully' });
             });
         });
     });
@@ -73,23 +73,27 @@ app.post('/login', (req, res) => {
 
     // Check if user exists
     db.query('SELECT * FROM users WHERE username = ?', [username], (err, result) => {
-        if (err) throw err;
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ loggedIn: false, message: 'An error occurred on the server.' });
+        }
 
         if (result.length === 0) {
-            return res.status(400).send('Invalid username or password');
+            return res.status(401).json({ loggedIn: false, message: 'Invalid username or password.' });
         }
 
         const user = result[0];
 
         // Check password
         if (!bcrypt.compareSync(password, user.password)) {
-            return res.status(400).send('Invalid username or password');
+            return res.status(401).json({ loggedIn: false, message: 'Invalid username or password.' });
         }
 
         // Set session
         req.session.user = { id: user.id, username: user.username };
 
-        res.redirect('/');
+        // Send JSON response for successful login
+        res.json({ loggedIn: true, message: 'Login successful.' });
     });
 });
 
